@@ -12,6 +12,14 @@ Clear everything to make sure there's nothing leftover in our environment
 rm(list = ls())
 ```
 
+## Data pipelines
+
+Dplyr makes it easy to "chain" functions together using the *pipe* operator `%>%`. The following diagram illustrates the general concept of pipes where data flows from one pipe to another until all the processing is completed.
+
+![](./img/pipes.png)
+
+The syntax of the pipe operator `%>%` might appear unusual at first, but once you get used to it you’ll start to appreciate its power and flexibility.
+
 ## Dataset
 
 We're using a dataset of flight departures from Houston in 2011.
@@ -32,13 +40,7 @@ planes <- read_csv("https://altaf-ali.github.io/tidydata_tutorial/data/planes.cs
 airports <- read_csv("https://altaf-ali.github.io/tidydata_tutorial/data/airports.csv")
 ```
 
-## Data pipelines
-
-Dplyr makes it easy to "chain" functions together using the *pipe* operator `%>%`. The following diagram illustrates the general concept of pipes where data flows from one pipe to another until all the processing is completed.
-
-![](./img/pipes.png)
-
-Now let's examine the flights data
+Now let's examine the dataset
 
 ```{r}
 flights
