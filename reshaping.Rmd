@@ -16,7 +16,7 @@ rm(list = ls())
 
 We're using a small sample of the WDI dataset here to simplify the tasks. Let's load the dataset and see what it looks like. 
 
-```{r}
+```{r message = FALSE}
 wdi <- read_csv("https://altaf-ali.github.io/tidydata_tutorial/data/wdi.csv", na = "..")
 
 wdi
