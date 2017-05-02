@@ -62,9 +62,9 @@ draw_table <- function(table_data, title = "") {
 Next, we load a small dataset of universities in the U.S.
 
 ```{r message=FALSE}
-universities <- read_csv("data/universities.csv")
-cities <- read_csv("data/cities.csv")
-states <- read_csv("data/states.csv")
+universities <- read_csv("https://altaf-ali.github.io/tidydata_tutorial/data/universities.csv")
+cities <- read_csv("https://altaf-ali.github.io/tidydata_tutorial/data/cities.csv")
+states <- read_csv("https://altaf-ali.github.io/tidydata_tutorial/data/states.csv")
 ```
 
 Let's see how we can merge the `universities` dataset with the `cities` dataset.
