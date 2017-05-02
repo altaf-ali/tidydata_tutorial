@@ -1,0 +1,100 @@
+# Reshaping
+
+It's fairly common for datasets from public sources to come in formats that need to be reshaped. The World Development Indicators (WDI) is one such dataset that requires reshaping before we can analyse it. Let's go over the steps to see how we can reshape the WDI dataset.
+
+Let's start by loading the `tidyverse` package first.
+
+```{r message = FALSE}
+library(tidyverse)
+```
+
+Clear everything to make sure there's nothing leftover in our environment
+
+```{r}
+rm(list = ls())
+```
+
+We're using a small sample of the WDI dataset here to simplify the tasks. Let's load the dataset and see what it looks like. 
+
+```{r}
+wdi <- read_csv("data/wdi.csv", na = "..")
+
+wdi
+```
+
+But ideally, we'd like our data to look something like this:
+
+```{r echo = FALSE}
+wdi %>%
+  filter(Country.Code != "") %>% 
+  gather(Year, Value, starts_with("X")) %>% 
+  select(Country.Code, Country.Name, Year, Series.Code, Value) %>%
+  spread(Series.Code, Value) %>% 
+  rename(CountryName = Country.Name,
+         CountryCode = Country.Code,
+         MaternalMortality = SH.STA.MMRT,
+         HealthExpenditure = SH.XPD.TOTL.ZS) %>%
+  mutate(Year = as.numeric(substring(Year, 2, 5)))
+```
+
+We can see that some country names and codes are blank, so let's get rid of them first
+
+```{r}
+wdi %>%
+  filter(Country.Code != "") 
+```
+
+So far so good. Note that we're not making any changes yet so we can just add one function at a time to the pipeline and check the results. Once we're satisfied with the results we save them to a variable.
+
+We need to gather all columns that start with "X" that contain per-year values for each series (for example X1960..YR1960)
+
+```{r}
+wdi %>%
+  filter(Country.Code != "") %>% 
+  gather(Year, Value, starts_with("X"))
+```
+
+Now all values are in the `Value` column, so we need to spread them out to individual columns based on the `Series.Code`. We have to make sure that we only keep the columns that  make the country-year observations unique. We use `select()` to keep `Country.Code`, `Country.Name`, `Year`, plus the two columns (`Series.Code` and `Value`) that will make up the key-value pair for the `spread()` function.
+
+```{r}
+wdi %>%
+  filter(Country.Code != "") %>% 
+  gather(Year, Value, starts_with("X")) %>% 
+  select(Country.Code, Country.Name, Year, Series.Code, Value) %>%
+  spread(Series.Code, Value) 
+```
+
+It looks good, so we can rename the variables to something meaningful.
+
+```{r}
+wdi %>%
+  filter(Country.Code != "") %>% 
+  gather(Year, Value, starts_with("X")) %>% 
+  select(Country.Code, Country.Name, Year, Series.Code, Value) %>%
+  spread(Series.Code, Value) %>% 
+  rename(CountryName = Country.Name,
+         CountryCode = Country.Code,
+         MaternalMortality = SH.STA.MMRT,
+         HealthExpenditure = SH.XPD.TOTL.ZS)
+```
+
+Now we just need to extract the 4-digit year from the `Year` column. The `Year` column is formatted as `X1995.YR1995` which means that the 4-digits for the year are in position `2`,`3`,`4`, and `5`. We can use the `substring()` function to take all the characters from position `2` to `5` and assign it back to the `Year` column.
+
+Since this is the last step we might as well assign the results to a new variable.
+
+```{r}
+wdi_long <- wdi %>%
+  filter(Country.Code != "") %>% 
+  gather(Year, Value, starts_with("X")) %>% 
+  select(Country.Code, Country.Name, Year, Series.Code, Value) %>%
+  spread(Series.Code, Value) %>% 
+  rename(CountryName = Country.Name,
+         CountryCode = Country.Code,
+         MaternalMortality = SH.STA.MMRT,
+         HealthExpenditure = SH.XPD.TOTL.ZS) %>%
+  mutate(Year = as.numeric(substring(Year, 2, 5)))
+
+wdi_long 
+```
+
+You can assign it back to `wdi` if you want, but we're using a different name in case we make a mistake and have to start again. This way we would've have to reload the file all over again.

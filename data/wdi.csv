@@ -1,0 +1,6 @@
+¬Series.Name,Series.Code,Country.Name,Country.Code,X1995.YR1995,X2000.YR2000,X2005.YR2005
+Maternal mortality,SH.STA.MMRT,France,FRA,15,12,10
+Maternal mortality,SH.STA.MMRT,Spain,ESP,6,5,5
+Maternal mortality,SH.STA.MMRT," "," ",..,..,..
+Health expenditure,SH.XPD.TOTL.ZS,France,FRA,10.3559065,10.08483349,10.93262619
+Health expenditure,SH.XPD.TOTL.ZS,Spain,ESP,7.44459249,7.21475551,8.28827138

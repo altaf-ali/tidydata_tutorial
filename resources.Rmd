@@ -6,6 +6,7 @@
 - [Data Wrangling with dplyr and tidyr Cheat Sheet](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)
 
 - [R for Data Science](http://r4ds.had.co.nz)
+- [Advanced R](http://adv-r.had.co.nz)
 
 - [Data manipulation with dplyr, 2014](http://bit.ly/hadley_dplyr_tutorial_2014)
 - [Introduction to dplyr](https://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html)
