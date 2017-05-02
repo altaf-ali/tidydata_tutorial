@@ -4,6 +4,4 @@ rmd_files:
   - resources.Rmd
   - getting_started.Rmd
   - basic_operations.Rmd
-  - merging.Rmd
-  - reshaping.Rmd
 
