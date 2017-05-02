@@ -1,5 +1,5 @@
-rmd_files: [
-  "index.Rmd",
-  "acknowledgments.Rmd"
-]
-
+rmd_files:
+  - index.Rmd
+  - acknowledgments.Rmd
+  - resources.Rmd
+  - getting_started.Rmd

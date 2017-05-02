@@ -6,8 +6,15 @@ github-repo: altaf-ali/tidydata_tutorial
 
 # Introduction
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Data manipulation is the process of cleaning, organising and preparing data in a way that makes it suitable for analysis. Most real-world datasets require some form of manipulation to facilitate the downstream analysis and this process is often repeated a number of times during the data analysis cycle. In this workshop you will learn how to apply a consistent grammar of data manipulation to raw data and prepare it for analysis. The following topics are covered in the workshop:
 
+- Learning to use the grammar of data manipulation
+- Merging multiple datasets and creating subsets using filters 
+- Reshaping data between long and wide formats 
+- Summarising data with group-wise operation
+- Setting up data pipelines for efficient data manipulation
+
+This workshop is designed for individuals who are already familiar with R but wish to learn efficient techniques for data manipulation. It is recommended that you bring your own laptop with the latest version of R and RStudio installed.
 
 ----
 

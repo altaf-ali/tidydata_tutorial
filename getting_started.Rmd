@@ -1,0 +1,63 @@
+# Getting Started
+
+## Prerequisites
+
+Basic knowledge of working with datasets in R is essential. This course assumes that you're comfortable with reading datasets, working with script files, and navigating in RStudio.
+
+## Software Requirements
+
+### R and RStudio
+
+Recent versions of R (version 3.2 or newer) and RStudio (version 1.0 above) are required.
+
+You can download the latest versions from the links below:
+
+- [Download R](https://cran.r-project.org)
+- [Download RStudio](https://www.rstudio.com/products/rstudio/download)
+
+You can find out the version of R installed by typing `version` at the console:
+
+```{r}
+version
+```
+
+## Required Packages
+
+This workshop relies on three packages: `dplyr`, `tidyr`, and `readr`. There are two ways to install these packages:
+
+### Option 1: Use `tidyverse`
+
+You can either install these two packages individually or use `tidyverse`. The `tidyverse` package is a collection of packages used for data manipulation and visualization. In addition to `dplyr`, `tidyr`, and `readr`, it also includes the following:
+
+```{r echo = FALSE}
+tidyverse::tidyverse_packages()
+```
+
+You can install `tidyverse` using the `install.packages()` function:
+
+```{r eval = FALSE}
+install.packages("tidyverse")
+```
+
+You can find out the version of `tidyverse` installed using the `packageVersion()` function:
+
+```{r}
+packageVersion("tidyverse")
+```
+
+To update `tidyverse` packages, you can use the `tidyverse_update()` function:
+
+```{r eval = FALSE}
+tidyverse::tidyverse_update()
+```
+
+### Option 2: Install Individual Packages
+
+If you encounter any problems installing `tidyverse`, then the other option is to install `dplyr`, `tidyr`, and `readr` individually.
+
+```{r eval = FALSE}
+install.packages("dplyr")
+install.packages("tidyr")
+install.packages("readr")
+```
+
