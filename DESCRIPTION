@@ -1,5 +1,5 @@
 Package: tidydata_tutorial
 Title: Data Manipulation in R
 Version: 0.1.1
-Imports: bookdown, tidyverse
+Imports: bookdown, tidyverse, gridExtra, RColorBrewer
 Remotes: altaf-ali/tidydata_tutorial

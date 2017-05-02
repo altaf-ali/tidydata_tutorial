@@ -7,8 +7,6 @@ library(tidyverse)
 ```
 
 ```{r echo = FALSE, message = FALSE}
-library(ggplot2)
-library(tidyr)
 library(gridExtra)
 library(RColorBrewer)
 ```
