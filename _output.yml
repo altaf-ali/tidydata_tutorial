@@ -1,0 +1,13 @@
+bookdown::gitbook:
+  css: css/readthedocs.css
+  config:
+    download: ["pdf"]
+    sharing:
+      github: yes
+      twitter: no
+      facebook: no
+      all: []
+
+bookdown::pdf_book:
+  keep_tex: yes
+

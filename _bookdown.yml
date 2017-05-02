@@ -1,0 +1,5 @@
+rmd_files: [
+  "index.Rmd",
+  "acknowledgments.Rmd"
+]
+

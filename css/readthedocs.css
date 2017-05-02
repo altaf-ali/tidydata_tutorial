@@ -1,0 +1,48 @@
+.book .book-summary {
+  border-right: 0;
+}
+
+.book .book-summary,
+.book .book-summary ul.summary li.active li a {
+  background: #06202d;
+}
+
+.book .book-summary ul.summary li a,
+.book .book-summary ul.summary li.active li a {
+  color: #b3b3b3;
+}
+
+.book .book-summary ul.summary li ul {
+  padding-left: 0;
+}
+
+.book .book-summary ul.summary li.active a {
+  color: black;
+  background: #1889c0;
+}
+
+.book .book-summary ul.summary li a {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.book .book-summary ul.summary li li a,
+.book .book-summary ul.summary li.active li a {
+  padding-left: 30px;
+}
+
+.book .book-summary ul.summary li a:hover,
+.book .book-summary ul.summary li.active a:hover {
+  color: white;
+  background: #093043;
+}
+
+.book .book-body .page-wrapper .page-inner section.normal pre {
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.book .book-body .page-wrapper .page-inner section.normal div.sourceCode pre.sourceCode {
+  background: #DFEBF5;
+}
+
