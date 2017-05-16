@@ -21,7 +21,7 @@ rm(list = ls())
 source("R/draw_table.R")
 ```
 
-Next, we load a small dataset of universities in the U.S.
+Next, we load three datasets of universities, cities, and states.
 
 ```{r message=FALSE}
 universities <- read_csv("https://altaf-ali.github.io/tidydata_tutorial/data/universities.csv")
