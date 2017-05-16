@@ -18,36 +18,7 @@ rm(list = ls())
 ```
 
 ```{r echo = FALSE}
-draw_table <- function(table_data, title = "") {
-  table_header <- data_frame(
-    x = seq_along(table_data),
-    y = nrow(table_data) +1,
-    text = names(table_data),
-    color_level = "AAA_first_color_level"
-  )
-  
-  table_body <- table_data %>%
-    arrange(desc(row_number())) %>%
-    mutate(y = row_number()) %>%
-    gather(x, text, -y) %>%
-    mutate(color_level = ifelse(is.na(text), "ZZZ_last_color_level", "BBB_somewhere_in_between"),
-           text = ifelse(is.na(text), "NA", text),
-           x = as.numeric(factor(x, levels = unique(names(table_data)))))
-  
-  ggplot(bind_rows(table_header, table_body), aes(x, y, fill = color_level)) + 
-    ggtitle(title) +
-    geom_tile(color = "black") +
-    scale_fill_manual(values = rev(brewer.pal(4, "RdYlBu"))) +
-    geom_text(aes(label = text)) +
-    theme(legend.position='none',
-          axis.ticks = element_blank(), 
-          axis.text = element_blank(),
-          axis.title = element_blank(),
-          panel.grid.major = element_blank(),
-          panel.grid.minor = element_blank(),
-          panel.background = element_blank(),
-          plot.title = element_text(lineheight=.8, face="bold"))
-}
+source("R/draw_table.R")
 ```
 
 Next, we load a small dataset of universities in the U.S.
@@ -72,7 +43,9 @@ universities %>%
 ```
 
 ```{r echo = FALSE, fig.height = 2, fig.width = 8}
-draw_table(left_join(universities, cities, by = "city"))
+universities %>%
+  left_join(cities, by = "city") %>% 
+  draw_table()
 ```
 
 ## Right Join
@@ -83,7 +56,9 @@ universities %>%
 ```
 
 ```{r echo = FALSE, fig.height = 2, fig.width = 8}
-draw_table(right_join(universities, cities, by = "city"))
+universities %>%
+  right_join(cities, by = "city") %>% 
+  draw_table()
 ```
 
 ## Inner Join
@@ -94,7 +69,9 @@ universities %>%
 ```
 
 ```{r echo = FALSE, fig.height = 1.6, fig.width = 8}
-draw_table(inner_join(universities, cities, by = "city"))
+universities %>%
+  inner_join(cities, by = "city") %>% 
+  draw_table()
 ```
 
 ## Full Join
@@ -105,7 +82,9 @@ universities %>%
 ```
 
 ```{r echo = FALSE, fig.height = 2.4, fig.width = 8}
-draw_table(full_join(universities, cities, by = "city"))
+universities %>%
+  full_join(cities, by = "city") %>% 
+  draw_table()
 ```
 
 ## Different Column Names
@@ -113,7 +92,8 @@ draw_table(full_join(universities, cities, by = "city"))
 In the previous example both our datasets included a column named `city`. But what if the names of the columns in the two datasets were not the same? For example, let's take a look at the `states` table:
 
 ```{r echo = FALSE, fig.height = 2, fig.width = 8}
-draw_table(states, "states")
+states %>% 
+  draw_table("states")
 ```
 
 What if we were to merge the `cities` dataset with `states`?
@@ -132,6 +112,55 @@ cities %>%
 In the above example, we're telling `left_join()` to merge using the `state` column from the `cities` data frame and `statename` column from the `states` data frame.
 
 ```{r echo = FALSE, fig.height = 2, fig.width = 8}
-draw_table(left_join(cities, states, by = c("state" = "statename")))
+left_join(cities, states, by = c("state" = "statename")) %>%
+  draw_table()
 ```
 
+## Exercise
+
+1. Load the following datasets:
+
+    ```{r message=FALSE}
+    phones <- read_csv("./data/phones.csv")
+    postcodes <- read_csv("./data/postcodes.csv")
+    ```
+
+    The datasets include phone numbers and postcodes of individuals:
+  
+    ```{r echo = FALSE, fig.height = 3, fig.width = 8}
+    phones %>%
+      draw_table("phones")
+    ```
+  
+    ```{r echo = FALSE, fig.height = 2.5, fig.width = 8}
+    postcodes %>%
+      draw_table("postcodes")
+    ```
+
+1. Merge the two datasets so that it ONLY includes observations that exist in BOTH the datasets. There should be no missing values or `NA` in the merged table. The results should match the following:
+
+    ```{r echo = FALSE, fig.height = 2, fig.width = 8}
+    inner_join(phones, postcodes, by = c("First" = "GivenName", "Middle", "Last" = "Surname")) %>%
+      draw_table()
+    ```
+
+1. Merge the two datasets so that it includes ALL the observations from both the datasets. Some `Phone` and `Postcode` values will be `NA` and that's ok. The results should match the following:
+
+    ```{r echo = FALSE, fig.height = 3.5, fig.width = 8}
+    full_join(phones, postcodes, by = c("First" = "GivenName", "Middle", "Last" = "Surname")) %>%
+      draw_table()
+    ```
+
+1. Merge the two datasets so that ALL observations from the `phones` datasets are included. Some `Postcode` values will be `NA` and that's ok. The results should match the following:
+
+    ```{r echo = FALSE, fig.height = 3, fig.width = 8}
+    left_join(phones, postcodes, by = c("First" = "GivenName", "Middle", "Last" = "Surname")) %>%
+      draw_table()
+    ```
+
+1. Merge the two datasets so that ALL observations from the `postcodes` datasets are included. Some `Phone` values will be `NA` and that's ok. The results should match the following:
+
+    ```{r echo = FALSE, fig.height = 2.5, fig.width = 8}
+    right_join(phones, postcodes, by = c("First" = "GivenName", "Middle", "Last" = "Surname")) %>%
+      draw_table()
+    ```
