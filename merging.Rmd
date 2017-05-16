@@ -121,8 +121,8 @@ left_join(cities, states, by = c("state" = "statename")) %>%
 1. Load the following datasets:
 
     ```{r message=FALSE}
-    phones <- read_csv("./data/phones.csv")
-    postcodes <- read_csv("./data/postcodes.csv")
+    phones <- read_csv("https://altaf-ali.github.io/tidydata_tutorial/data/phones.csv")
+    postcodes <- read_csv("https://altaf-ali.github.io/tidydata_tutorial/data/postcodes.csv")
     ```
 
     The datasets include phone numbers and postcodes of individuals:
