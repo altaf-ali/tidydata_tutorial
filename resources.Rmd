@@ -2,7 +2,9 @@
 
 - [Google](http://www.google.com)
 
+- [Tidy Data](http://vita.had.co.nz/papers/tidy-data.pdf)
 - [Tidyverse](http://tidyverse.org)
+
 - [Data Wrangling with dplyr and tidyr Cheat Sheet](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)
 
 - [R for Data Science](http://r4ds.had.co.nz)

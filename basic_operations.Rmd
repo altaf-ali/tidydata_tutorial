@@ -246,3 +246,20 @@ delays
 1. Which flights (carrier + flight number) happen everyday and where do they fly?
 1. How do delays (of non-cancelled flights) vary over the course of a day? 
 
+## Unite
+
+The `unite` function is useful for combining multiple columns together. In the example below, we join the `carrier` and `flight` to create a unique `flight_id` column.
+
+```{r}
+flights %>%
+  unite(flight_id, carrier, flight, sep = "-")
+```
+
+## Separate
+
+The `separate` function works the other way around by splitting a single column into multiple columns. Let's split the `date` column into separate `date` and `time` columns.
+
+```{r}
+flights %>%
+  separate(date, c("date", "time"), sep = " ")
+```
