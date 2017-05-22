@@ -268,3 +268,7 @@ flights %>%
 ### Exercise
 
 1. Split the `date` column into `year`, `month`, and `day` columns
+1. Ensure that the `year`, `month`, and `day` columns are of type *integer* (NOT *character*)
+    - HINT: Use online help for `separate` for an easy way to do this
+    
+    
