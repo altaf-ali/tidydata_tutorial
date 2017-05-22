@@ -252,7 +252,8 @@ The `unite` function is useful for combining multiple columns together. In the e
 
 ```{r}
 flights %>%
-  unite(flight_id, carrier, flight, sep = "-")
+  unite(flight_id, carrier, flight, sep = "-", remove = FALSE) %>%
+  select(date, carrier, flight, flight_id)
 ```
 
 ## Separate
@@ -263,3 +264,7 @@ The `separate` function works the other way around by splitting a single column 
 flights %>%
   separate(date, c("date", "time"), sep = " ")
 ```
+
+### Exercise
+
+1. Split the `date` column into `year`, `month`, and `day` columns
