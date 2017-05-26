@@ -4,6 +4,10 @@ site: bookdown::bookdown_site
 github-repo: altaf-ali/tidydata_tutorial
 ---
 
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(comment = NA)
+```
+
 # Introduction
 
 Data manipulation is the process of cleaning, organising and preparing data in a way that makes it suitable for analysis. Most real-world datasets require some form of manipulation to facilitate the downstream analysis and this process is often repeated a number of times during the data analysis cycle. In this workshop you will learn how to apply a consistent grammar of data manipulation to raw data and prepare it for analysis. The following topics are covered in the workshop:
