@@ -9,8 +9,8 @@ env:
   - secure: EFg9mo8fMJ0HolwunW4J7ycm9FdXrz7SQF+WSeXg/CKRcj4HdBZAZIgFAVls5iPS6LW3u7zdWE/284BUdx7wWq1+e3ux5MAZsVtsEesWhzK+QaF+V/6XMrpSzP3Xf1HMWofngWvq++30BNNXonSAExSc53sJZi0z5sh3s0GeRNMmfyxwAlgXqRya9RqqfzJunNU/xvC0upmHqBv+A0Jrnc6WaMouiv1V50SsRynDMS+NrVyu/DDz5i3ac3KWyqqTsyYO8ZW4PCWb58peSfKzTc7EqIUNttrgAFyIGQ7VPc2Mjlg2WCTXropxH+giiAEtruw479T1xrfILb8SiWq4jn9dINp5iV65Hp/QDAyswowoerpzkjzzR73suz+9FHTZQu5YYMGF0E0lSbfkMo2ZdPY7o2WC0Xpo5HD0qk1fUqK8f/JmVZAId6m8s6NgFAQL12Qdpr2C8zDbwthYrAGIGjsH/EKSVJSC264ewg8Q68g7m3dvQlKrPy5SLHJHFqHoXZsqsQDMrbr7fk0V+CoW65xSg0dDCaBRPcTKXLJqTGJ42qt/ZEyiffbI0A8D1wIETjhGFJ/vYW72SDAHGQBJ5kLfTkVl5yzRioP6+R2TJ6sCiCj5mOv5CyK9tJbEDCIhHlqUAob33mdWh65T6EmC6olccsUaXmpuvN3bJeeyg1Y=
 
 script:
-  - Rscript -e 'bookdown::render_book("index.Rmd", bookdown::gitbook, quiet = TRUE)'
-  - Rscript -e 'bookdown::render_book("index.Rmd", bookdown::pdf_book, quiet = TRUE)'
+  - Rscript -e 'bookdown::render_book("index.Rmd", "bookdown::gitbook", quiet = TRUE)'
+  - Rscript -e 'bookdown::render_book("index.Rmd", "bookdown::pdf_book", quiet = TRUE)'
 
 deploy:
   provider: pages
