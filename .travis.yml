@@ -20,4 +20,6 @@ deploy:
   local_dir: _book
   github_token: $GITHUB_TOKEN
 
+notifications:
+  email: false
 
