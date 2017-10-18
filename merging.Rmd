@@ -24,9 +24,9 @@ source("R/draw_table.R")
 Next, we load three datasets of universities, cities, and states.
 
 ```{r message=FALSE}
-universities <- read_csv("https://altaf-ali.github.io/tidydata_tutorial/data/universities.csv")
-cities <- read_csv("https://altaf-ali.github.io/tidydata_tutorial/data/cities.csv")
-states <- read_csv("https://altaf-ali.github.io/tidydata_tutorial/data/states.csv")
+universities <- read_csv("https://raw.githubusercontent.com/altaf-ali/tidydata_tutorial/master/data/universities.csv")
+cities <- read_csv("https://raw.githubusercontent.com/altaf-ali/tidydata_tutorial/master/data/cities.csv")
+states <- read_csv("https://raw.githubusercontent.com/altaf-ali/tidydata_tutorial/master/data/states.csv")
 ```
 
 Let's see how we can merge the `universities` dataset with the `cities` dataset.
@@ -121,8 +121,8 @@ left_join(cities, states, by = c("state" = "statename")) %>%
 1. Load the following datasets:
 
     ```{r message=FALSE}
-    phones <- read_csv("https://altaf-ali.github.io/tidydata_tutorial/data/phones.csv")
-    postcodes <- read_csv("https://altaf-ali.github.io/tidydata_tutorial/data/postcodes.csv")
+    phones <- read_csv("https://raw.githubusercontent.com/altaf-ali/tidydata_tutorial/master/data/phones.csv")
+    postcodes <- read_csv("https://raw.githubusercontent.com/altaf-ali/tidydata_tutorial/master/data/postcodes.csv")
     ```
 
     The datasets include phone numbers and postcodes of individuals:
