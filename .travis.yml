@@ -1,10 +1,13 @@
 language: r
-
 sudo: false
-dist: trusty
 
 cache:
   packages: true
+
+addons:
+  apt:
+    sources:
+    - sourceline: deb http://archive.ubuntu.com/ubuntu trusty main
 
 env:
   global:
