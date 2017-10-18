@@ -1,3 +1,6 @@
+delete_merged_file: true
+book_filename: tidydata_tutorial.Rmd
+
 rmd_files:
   - index.Rmd
   - acknowledgments.Rmd

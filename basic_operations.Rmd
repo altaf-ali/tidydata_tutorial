@@ -34,10 +34,10 @@ We're using a dataset of flight departures from Houston in 2011.
 We're going to use the `readr` package which provides improved functions for reading datasets from files. Instead of the usual `read.csv()` function, we'll use the `read_csv()` function from `readr`.
 
 ```{r message = FALSE}
-flights <- read_csv("https://altaf-ali.github.io/tidydata_tutorial/data/flights.csv")
-weather <- read_csv("https://altaf-ali.github.io/tidydata_tutorial/data/weather.csv")
-planes <- read_csv("https://altaf-ali.github.io/tidydata_tutorial/data/planes.csv")
-airports <- read_csv("https://altaf-ali.github.io/tidydata_tutorial/data/airports.csv")
+flights <- read_csv("https://raw.githubusercontent.com/altaf-ali/tidydata_tutorial/master/data/flights.csv")
+weather <- read_csv("https://raw.githubusercontent.com/altaf-ali/tidydata_tutorial/master/data/weather.csv")
+planes <- read_csv("https://raw.githubusercontent.com/altaf-ali/tidydata_tutorial/master/data/planes.csv")
+airports <- read_csv("https://raw.githubusercontent.com/altaf-ali/tidydata_tutorial/master/data/airports.csv")
 ```
 
 Now let's examine the dataset
