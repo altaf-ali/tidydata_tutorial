@@ -1,10 +1,9 @@
 language: r
 sudo: false
+dist: precise
 
 cache:
   packages: true
-
-install: false
 
 env:
   global:
