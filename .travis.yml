@@ -1,23 +1,23 @@
 language: r
-
 sudo: false
 
 cache:
-  packages: yes
-  directories:
-    - $TRAVIS_BUILD_DIR/_bookdown_files
+  packages: true
 
 env:
   global:
-    - GIT_AUTHOR_NAME: "Altaf Ali"
-    - GIT_AUTHOR_EMAIL: "altaf@fastmail.com"
-    - secure: "vai7MI5g/PaS7gnTwhn5GuhciBSRFqHmia1dccofZ20Ye1yY4PxQTlunCjKs8SmZQqW7oiFqJCViOWFU9bg+W/0Wdvv+tNEKQ78gpZxYNKegSQBFpLtIkGr1s66Zq1zcvvypM58jCZb1bMMZVptNTPjaparobksyYFeh0X8mFjE6+VPmpNvreZAE0obB+Wyc0wpHw44wmF/2EXNnjCgnmI8tgsWgJAvoJffCmftIzeufQSH4oR0YXzk3dHnvKr5fP4AJjg/F2R2a+jz6NF8sKeDnsj5apxVUiv1Aj05Iv6xvVOOr95m7RdEjFs/W7/JxDXqcKQ0nQGiQkOvWU6AlActXnd0uFnSUOK4hnVBLITzfxz3vPYkyYP8CVqE3cLHJk34/bJWIM/zkZYx7rR0mygpZcX3xsaQNNU/WluxgSKCx1+1BM4dk5NUB3q3DywzgrsDmMEpu2He6agHcn0nRv3j5Ou1+TZzZvlybirglnBF/SLpoScIgYw6YFyJ1Us0dELsoYrpPT0ILbtGJugyhl5NhpAN+zeg4sg5g8wIbuAaJByAzMyjWcz2aaX9eiAV61C8zvq+kG4BxxpHey2BoBsT2qqps1yxSqXFomFfuQRr+DM1TlyUAUkAbGThUSesxt9/qxWgAUqoMCx9cXn+uj+CzlpkMCnPoiWjoNS6xb9g="
-
-before_script:
-  - chmod +x ./bin/_build.sh
-  - chmod +x ./bin/_deploy.sh
+  - secure: EFg9mo8fMJ0HolwunW4J7ycm9FdXrz7SQF+WSeXg/CKRcj4HdBZAZIgFAVls5iPS6LW3u7zdWE/284BUdx7wWq1+e3ux5MAZsVtsEesWhzK+QaF+V/6XMrpSzP3Xf1HMWofngWvq++30BNNXonSAExSc53sJZi0z5sh3s0GeRNMmfyxwAlgXqRya9RqqfzJunNU/xvC0upmHqBv+A0Jrnc6WaMouiv1V50SsRynDMS+NrVyu/DDz5i3ac3KWyqqTsyYO8ZW4PCWb58peSfKzTc7EqIUNttrgAFyIGQ7VPc2Mjlg2WCTXropxH+giiAEtruw479T1xrfILb8SiWq4jn9dINp5iV65Hp/QDAyswowoerpzkjzzR73suz+9FHTZQu5YYMGF0E0lSbfkMo2ZdPY7o2WC0Xpo5HD0qk1fUqK8f/JmVZAId6m8s6NgFAQL12Qdpr2C8zDbwthYrAGIGjsH/EKSVJSC264ewg8Q68g7m3dvQlKrPy5SLHJHFqHoXZsqsQDMrbr7fk0V+CoW65xSg0dDCaBRPcTKXLJqTGJ42qt/ZEyiffbI0A8D1wIETjhGFJ/vYW72SDAHGQBJ5kLfTkVl5yzRioP6+R2TJ6sCiCj5mOv5CyK9tJbEDCIhHlqUAob33mdWh65T6EmC6olccsUaXmpuvN3bJeeyg1Y=
 
 script:
-  - ./bin/_build.sh
-  - ./bin/_deploy.sh
+  - Rscript -e 'bookdown::render_book("index.Rmd", bookdown::gitbook, quiet = TRUE)'
+  - Rscript -e 'bookdown::render_book("index.Rmd", bookdown::pdf_book, quiet = TRUE)'
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  on:
+    branch: master
+  local_dir: _book
+  github_token: $GITHUB_TOKEN
+
 
