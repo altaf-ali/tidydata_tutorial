@@ -4,10 +4,7 @@ sudo: false
 cache:
   packages: true
 
-addons:
-  apt:
-    sources:
-    - sourceline: deb http://archive.ubuntu.com/ubuntu trusty main
+install: false
 
 env:
   global:
