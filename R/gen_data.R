@@ -61,3 +61,27 @@ postcodes <- people %>%
 postcodes %>%
   write_csv("./data/postcodes.csv")
 
+presidents <- read_csv("./data/USPresident-Wikipedia-URLs-Thmbs-HS.csv") %>%
+  select(President, TookOffice = `Took office`, LeftOffice = `Left office`, HomeState = `Home State`) %>%
+  extract(President, c("First", "Last"), regex = "(.*)\\s(.*)") %>%
+  separate(First, c("First", "Middle"), extra = "merge")
+
+home_states <- presidents %>%
+  select(GivenName = First, Middle, Surname = Last, HomeState) %>%
+  filter(row_number() %in% c(6,27,32,41,43)) %>%
+  sample_n(nrow(.))
+
+home_states
+
+home_states %>%
+  write_csv("data/presidents_home.csv")
+
+presidents <- presidents %>%
+  select(First, Middle, Last, TookOffice, LeftOffice) %>%
+  filter(row_number() %in% c(32,34,35,41,43)) %>%
+  sample_n(nrow(.))
+
+presidents
+
+presidents %>%
+  write_csv("data/presidents.csv")
