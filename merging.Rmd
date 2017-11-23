@@ -121,46 +121,46 @@ left_join(cities, states, by = c("state" = "statename")) %>%
 1. Load the following datasets:
 
     ```{r message=FALSE}
-    phones <- read_csv("https://raw.githubusercontent.com/altaf-ali/tidydata_tutorial/master/data/phones.csv")
-    postcodes <- read_csv("https://raw.githubusercontent.com/altaf-ali/tidydata_tutorial/master/data/postcodes.csv")
+    presidents <- read_csv("https://raw.githubusercontent.com/altaf-ali/tidydata_tutorial/master/data/presidents.csv")
+    presidents_home <- read_csv("https://raw.githubusercontent.com/altaf-ali/tidydata_tutorial/master/data/presidents_home.csv")
     ```
 
-    The datasets include phone numbers and postcodes of individuals:
+    The datasets include names of U.S. presidents:
   
     ```{r echo = FALSE, fig.height = 3, fig.width = 8}
-    phones %>%
-      draw_table("phones")
+    presidents %>%
+      draw_table("presidents")
     ```
   
     ```{r echo = FALSE, fig.height = 2.5, fig.width = 8}
-    postcodes %>%
-      draw_table("postcodes")
+    presidents_home %>%
+      draw_table("presidents_home")
     ```
 
 1. Merge the two datasets so that it ONLY includes observations that exist in BOTH the datasets. There should be no missing values or `NA` in the merged table. The results should match the following:
 
     ```{r echo = FALSE, fig.height = 2, fig.width = 8}
-    inner_join(phones, postcodes, by = c("First" = "GivenName", "Middle", "Last" = "Surname")) %>%
+    inner_join(presidents, presidents_home, by = c("First" = "GivenName", "Middle", "Last" = "Surname")) %>%
       draw_table()
     ```
 
-1. Merge the two datasets so that it includes ALL the observations from both the datasets. Some `Phone` and `Postcode` values will be `NA` and that's ok. The results should match the following:
+1. Merge the two datasets so that it includes ALL the observations from both the datasets. Some `TookOffice, LeftOffice` and `HomeState` values will be `NA` and that's ok. The results should match the following:
 
     ```{r echo = FALSE, fig.height = 3.5, fig.width = 8}
-    full_join(phones, postcodes, by = c("First" = "GivenName", "Middle", "Last" = "Surname")) %>%
+    full_join(presidents, presidents_home, by = c("First" = "GivenName", "Middle", "Last" = "Surname")) %>%
       draw_table()
     ```
 
-1. Merge the two datasets so that ALL observations from the `phones` datasets are included. Some `Postcode` values will be `NA` and that's ok. The results should match the following:
+1. Merge the two datasets so that ALL observations from the `presidents` datasets are included. Some `HomeState` values will be `NA` and that's ok. The results should match the following:
 
     ```{r echo = FALSE, fig.height = 3, fig.width = 8}
-    left_join(phones, postcodes, by = c("First" = "GivenName", "Middle", "Last" = "Surname")) %>%
+    left_join(presidents, presidents_home, by = c("First" = "GivenName", "Middle", "Last" = "Surname")) %>%
       draw_table()
     ```
 
-1. Merge the two datasets so that ALL observations from the `postcodes` datasets are included. Some `Phone` values will be `NA` and that's ok. The results should match the following:
+1. Merge the two datasets so that ALL observations from the `presidents_home` datasets are included. Some `TookOffice` and `LeftOffice` values will be `NA` and that's ok. The results should match the following:
 
     ```{r echo = FALSE, fig.height = 2.5, fig.width = 8}
-    right_join(phones, postcodes, by = c("First" = "GivenName", "Middle", "Last" = "Surname")) %>%
+    right_join(presidents, presidents_home, by = c("First" = "GivenName", "Middle", "Last" = "Surname")) %>%
       draw_table()
     ```
