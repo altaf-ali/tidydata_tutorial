@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Data Manipulation in R</title>
+  <meta name="description" content="Data Manipulation in R">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Data Manipulation in R" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  <meta name="github-repo" content="altaf-ali/tidydata_tutorial" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Data Manipulation in R" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="resources.html">
+<link rel="next" href="basic-operations.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="css/readthedocs.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="acknowledgments.html"><a href="acknowledgments.html"><i class="fa fa-check"></i><b>2</b> Acknowledgments</a></li>
+<li class="chapter" data-level="3" data-path="resources.html"><a href="resources.html"><i class="fa fa-check"></i><b>3</b> Resources</a></li>
+<li class="chapter" data-level="4" data-path="getting-started.html"><a href="getting-started.html"><i class="fa fa-check"></i><b>4</b> Getting Started</a><ul>
+<li class="chapter" data-level="4.1" data-path="getting-started.html"><a href="getting-started.html#prerequisites"><i class="fa fa-check"></i><b>4.1</b> Prerequisites</a></li>
+<li class="chapter" data-level="4.2" data-path="getting-started.html"><a href="getting-started.html#software-requirements"><i class="fa fa-check"></i><b>4.2</b> Software Requirements</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="getting-started.html"><a href="getting-started.html#r-and-rstudio"><i class="fa fa-check"></i><b>4.2.1</b> R and RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="getting-started.html"><a href="getting-started.html#required-packages"><i class="fa fa-check"></i><b>4.3</b> Required Packages</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="getting-started.html"><a href="getting-started.html#option-1-use-tidyverse"><i class="fa fa-check"></i><b>4.3.1</b> Option 1: Use <code>tidyverse</code></a></li>
+<li class="chapter" data-level="4.3.2" data-path="getting-started.html"><a href="getting-started.html#option-2-install-individual-packages"><i class="fa fa-check"></i><b>4.3.2</b> Option 2: Install Individual Packages</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="basic-operations.html"><a href="basic-operations.html"><i class="fa fa-check"></i><b>5</b> Basic Operations</a><ul>
+<li class="chapter" data-level="5.1" data-path="basic-operations.html"><a href="basic-operations.html#data-pipelines"><i class="fa fa-check"></i><b>5.1</b> Data pipelines</a></li>
+<li class="chapter" data-level="5.2" data-path="basic-operations.html"><a href="basic-operations.html#dataset"><i class="fa fa-check"></i><b>5.2</b> Dataset</a></li>
+<li class="chapter" data-level="5.3" data-path="basic-operations.html"><a href="basic-operations.html#select"><i class="fa fa-check"></i><b>5.3</b> Select</a></li>
+<li class="chapter" data-level="5.4" data-path="basic-operations.html"><a href="basic-operations.html#filter"><i class="fa fa-check"></i><b>5.4</b> Filter</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="basic-operations.html"><a href="basic-operations.html#exercise"><i class="fa fa-check"></i><b>5.4.1</b> Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="basic-operations.html"><a href="basic-operations.html#arrange"><i class="fa fa-check"></i><b>5.5</b> Arrange</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="basic-operations.html"><a href="basic-operations.html#exercise-1"><i class="fa fa-check"></i><b>5.5.1</b> Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="basic-operations.html"><a href="basic-operations.html#mutate"><i class="fa fa-check"></i><b>5.6</b> Mutate</a><ul>
+<li class="chapter" data-level="5.6.1" data-path="basic-operations.html"><a href="basic-operations.html#exercise-2"><i class="fa fa-check"></i><b>5.6.1</b> Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="basic-operations.html"><a href="basic-operations.html#summarise"><i class="fa fa-check"></i><b>5.7</b> Summarise</a><ul>
+<li class="chapter" data-level="5.7.1" data-path="basic-operations.html"><a href="basic-operations.html#exercise-3"><i class="fa fa-check"></i><b>5.7.1</b> Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="5.8" data-path="basic-operations.html"><a href="basic-operations.html#unite"><i class="fa fa-check"></i><b>5.8</b> Unite</a></li>
+<li class="chapter" data-level="5.9" data-path="basic-operations.html"><a href="basic-operations.html#separate"><i class="fa fa-check"></i><b>5.9</b> Separate</a><ul>
+<li class="chapter" data-level="5.9.1" data-path="basic-operations.html"><a href="basic-operations.html#exercise-4"><i class="fa fa-check"></i><b>5.9.1</b> Exercise</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="merging-datasets.html"><a href="merging-datasets.html"><i class="fa fa-check"></i><b>6</b> Merging Datasets</a><ul>
+<li class="chapter" data-level="6.1" data-path="merging-datasets.html"><a href="merging-datasets.html#left-join"><i class="fa fa-check"></i><b>6.1</b> Left Join</a></li>
+<li class="chapter" data-level="6.2" data-path="merging-datasets.html"><a href="merging-datasets.html#right-join"><i class="fa fa-check"></i><b>6.2</b> Right Join</a></li>
+<li class="chapter" data-level="6.3" data-path="merging-datasets.html"><a href="merging-datasets.html#inner-join"><i class="fa fa-check"></i><b>6.3</b> Inner Join</a></li>
+<li class="chapter" data-level="6.4" data-path="merging-datasets.html"><a href="merging-datasets.html#full-join"><i class="fa fa-check"></i><b>6.4</b> Full Join</a></li>
+<li class="chapter" data-level="6.5" data-path="merging-datasets.html"><a href="merging-datasets.html#different-column-names"><i class="fa fa-check"></i><b>6.5</b> Different Column Names</a></li>
+<li class="chapter" data-level="6.6" data-path="merging-datasets.html"><a href="merging-datasets.html#exercise-5"><i class="fa fa-check"></i><b>6.6</b> Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="reshaping.html"><a href="reshaping.html"><i class="fa fa-check"></i><b>7</b> Reshaping</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Manipulation in R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="getting-started" class="section level1">
+<h1><span class="header-section-number">4</span> Getting Started</h1>
+<div id="prerequisites" class="section level2">
+<h2><span class="header-section-number">4.1</span> Prerequisites</h2>
+<p>Basic knowledge of working with datasets in R is essential. This course assumes that you’re comfortable with reading datasets, working with script files, and navigating in RStudio.</p>
+</div>
+<div id="software-requirements" class="section level2">
+<h2><span class="header-section-number">4.2</span> Software Requirements</h2>
+<div id="r-and-rstudio" class="section level3">
+<h3><span class="header-section-number">4.2.1</span> R and RStudio</h3>
+<p>Recent versions of R (version 3.2 or newer) and RStudio (version 1.0 above) are required.</p>
+<p>You can download the latest versions from the links below:</p>
+<ul>
+<li><a href="https://cran.r-project.org">Download R</a></li>
+<li><a href="https://www.rstudio.com/products/rstudio/download">Download RStudio</a></li>
+</ul>
+<p>You can find out the version of R installed by typing <code>version</code> at the console:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">version</code></pre></div>
+<pre><code>               _                           
+platform       x86_64-pc-linux-gnu         
+arch           x86_64                      
+os             linux-gnu                   
+system         x86_64, linux-gnu           
+status                                     
+major          3                           
+minor          4.2                         
+year           2017                        
+month          01                          
+day            27                          
+svn rev        73369                       
+language       R                           
+version.string R version 3.4.2 (2017-01-27)
+nickname       Short Summer                </code></pre>
+</div>
+</div>
+<div id="required-packages" class="section level2">
+<h2><span class="header-section-number">4.3</span> Required Packages</h2>
+<p>This workshop relies on three packages: <code>dplyr</code>, <code>tidyr</code>, and <code>readr</code>. There are two ways to install these packages:</p>
+<div id="option-1-use-tidyverse" class="section level3">
+<h3><span class="header-section-number">4.3.1</span> Option 1: Use <code>tidyverse</code></h3>
+<p>You can either install these two packages individually or use <code>tidyverse</code>. The <code>tidyverse</code> package is a collection of packages used for data manipulation and visualization. In addition to <code>dplyr</code>, <code>tidyr</code>, and <code>readr</code>, it also includes the following:</p>
+<pre><code> [1] &quot;broom&quot;       &quot;cli&quot;         &quot;crayon&quot;      &quot;dplyr&quot;       &quot;dbplyr&quot;     
+ [6] &quot;forcats&quot;     &quot;ggplot2&quot;     &quot;haven&quot;       &quot;hms&quot;         &quot;httr&quot;       
+[11] &quot;jsonlite&quot;    &quot;lubridate&quot;   &quot;magrittr&quot;    &quot;modelr&quot;      &quot;purrr&quot;      
+[16] &quot;readr&quot;       &quot;readxl\n(&gt;=&quot; &quot;reprex&quot;      &quot;rlang&quot;       &quot;rstudioapi&quot; 
+[21] &quot;rvest&quot;       &quot;stringr&quot;     &quot;tibble&quot;      &quot;tidyr&quot;       &quot;xml2&quot;       
+[26] &quot;tidyverse&quot;  </code></pre>
+<p>You can install <code>tidyverse</code> using the <code>install.packages()</code> function:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</code></pre></div>
+<p>You can find out the version of <code>tidyverse</code> installed using the <code>packageVersion()</code> function:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">packageVersion</span>(<span class="st">&quot;tidyverse&quot;</span>)</code></pre></div>
+<pre><code>[1] &#39;1.2.1&#39;</code></pre>
+<p>To update <code>tidyverse</code> packages, you can use the <code>tidyverse_update()</code> function:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tidyverse::<span class="kw">tidyverse_update</span>()</code></pre></div>
+</div>
+<div id="option-2-install-individual-packages" class="section level3">
+<h3><span class="header-section-number">4.3.2</span> Option 2: Install Individual Packages</h3>
+<p>If you encounter any problems installing <code>tidyverse</code>, then the other option is to install <code>dplyr</code>, <code>tidyr</code>, and <code>readr</code> individually.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>)
+<span class="kw">install.packages</span>(<span class="st">&quot;tidyr&quot;</span>)
+<span class="kw">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</code></pre></div>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="resources.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="basic-operations.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": false,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": {}
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": ["tidydata_tutorial.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

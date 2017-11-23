@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Data Manipulation in R</title>
+  <meta name="description" content="Data Manipulation in R">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Data Manipulation in R" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  <meta name="github-repo" content="altaf-ali/tidydata_tutorial" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Data Manipulation in R" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="basic-operations.html">
+<link rel="next" href="reshaping.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="css/readthedocs.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="acknowledgments.html"><a href="acknowledgments.html"><i class="fa fa-check"></i><b>2</b> Acknowledgments</a></li>
+<li class="chapter" data-level="3" data-path="resources.html"><a href="resources.html"><i class="fa fa-check"></i><b>3</b> Resources</a></li>
+<li class="chapter" data-level="4" data-path="getting-started.html"><a href="getting-started.html"><i class="fa fa-check"></i><b>4</b> Getting Started</a><ul>
+<li class="chapter" data-level="4.1" data-path="getting-started.html"><a href="getting-started.html#prerequisites"><i class="fa fa-check"></i><b>4.1</b> Prerequisites</a></li>
+<li class="chapter" data-level="4.2" data-path="getting-started.html"><a href="getting-started.html#software-requirements"><i class="fa fa-check"></i><b>4.2</b> Software Requirements</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="getting-started.html"><a href="getting-started.html#r-and-rstudio"><i class="fa fa-check"></i><b>4.2.1</b> R and RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="getting-started.html"><a href="getting-started.html#required-packages"><i class="fa fa-check"></i><b>4.3</b> Required Packages</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="getting-started.html"><a href="getting-started.html#option-1-use-tidyverse"><i class="fa fa-check"></i><b>4.3.1</b> Option 1: Use <code>tidyverse</code></a></li>
+<li class="chapter" data-level="4.3.2" data-path="getting-started.html"><a href="getting-started.html#option-2-install-individual-packages"><i class="fa fa-check"></i><b>4.3.2</b> Option 2: Install Individual Packages</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="basic-operations.html"><a href="basic-operations.html"><i class="fa fa-check"></i><b>5</b> Basic Operations</a><ul>
+<li class="chapter" data-level="5.1" data-path="basic-operations.html"><a href="basic-operations.html#data-pipelines"><i class="fa fa-check"></i><b>5.1</b> Data pipelines</a></li>
+<li class="chapter" data-level="5.2" data-path="basic-operations.html"><a href="basic-operations.html#dataset"><i class="fa fa-check"></i><b>5.2</b> Dataset</a></li>
+<li class="chapter" data-level="5.3" data-path="basic-operations.html"><a href="basic-operations.html#select"><i class="fa fa-check"></i><b>5.3</b> Select</a></li>
+<li class="chapter" data-level="5.4" data-path="basic-operations.html"><a href="basic-operations.html#filter"><i class="fa fa-check"></i><b>5.4</b> Filter</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="basic-operations.html"><a href="basic-operations.html#exercise"><i class="fa fa-check"></i><b>5.4.1</b> Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="basic-operations.html"><a href="basic-operations.html#arrange"><i class="fa fa-check"></i><b>5.5</b> Arrange</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="basic-operations.html"><a href="basic-operations.html#exercise-1"><i class="fa fa-check"></i><b>5.5.1</b> Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="basic-operations.html"><a href="basic-operations.html#mutate"><i class="fa fa-check"></i><b>5.6</b> Mutate</a><ul>
+<li class="chapter" data-level="5.6.1" data-path="basic-operations.html"><a href="basic-operations.html#exercise-2"><i class="fa fa-check"></i><b>5.6.1</b> Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="basic-operations.html"><a href="basic-operations.html#summarise"><i class="fa fa-check"></i><b>5.7</b> Summarise</a><ul>
+<li class="chapter" data-level="5.7.1" data-path="basic-operations.html"><a href="basic-operations.html#exercise-3"><i class="fa fa-check"></i><b>5.7.1</b> Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="5.8" data-path="basic-operations.html"><a href="basic-operations.html#unite"><i class="fa fa-check"></i><b>5.8</b> Unite</a></li>
+<li class="chapter" data-level="5.9" data-path="basic-operations.html"><a href="basic-operations.html#separate"><i class="fa fa-check"></i><b>5.9</b> Separate</a><ul>
+<li class="chapter" data-level="5.9.1" data-path="basic-operations.html"><a href="basic-operations.html#exercise-4"><i class="fa fa-check"></i><b>5.9.1</b> Exercise</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="merging-datasets.html"><a href="merging-datasets.html"><i class="fa fa-check"></i><b>6</b> Merging Datasets</a><ul>
+<li class="chapter" data-level="6.1" data-path="merging-datasets.html"><a href="merging-datasets.html#left-join"><i class="fa fa-check"></i><b>6.1</b> Left Join</a></li>
+<li class="chapter" data-level="6.2" data-path="merging-datasets.html"><a href="merging-datasets.html#right-join"><i class="fa fa-check"></i><b>6.2</b> Right Join</a></li>
+<li class="chapter" data-level="6.3" data-path="merging-datasets.html"><a href="merging-datasets.html#inner-join"><i class="fa fa-check"></i><b>6.3</b> Inner Join</a></li>
+<li class="chapter" data-level="6.4" data-path="merging-datasets.html"><a href="merging-datasets.html#full-join"><i class="fa fa-check"></i><b>6.4</b> Full Join</a></li>
+<li class="chapter" data-level="6.5" data-path="merging-datasets.html"><a href="merging-datasets.html#different-column-names"><i class="fa fa-check"></i><b>6.5</b> Different Column Names</a></li>
+<li class="chapter" data-level="6.6" data-path="merging-datasets.html"><a href="merging-datasets.html#exercise-5"><i class="fa fa-check"></i><b>6.6</b> Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="reshaping.html"><a href="reshaping.html"><i class="fa fa-check"></i><b>7</b> Reshaping</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Manipulation in R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="merging-datasets" class="section level1">
+<h1><span class="header-section-number">6</span> Merging Datasets</h1>
+<p>Let’s start by loading the <code>tidyverse</code> package</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)</code></pre></div>
+<p>Clear everything to make sure there’s nothing leftover in our environment</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rm</span>(<span class="dt">list =</span> <span class="kw">ls</span>())</code></pre></div>
+<p>Next, we load three datasets of universities, cities, and states.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">universities &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/altaf-ali/tidydata_tutorial/master/data/universities.csv&quot;</span>)
+cities &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/altaf-ali/tidydata_tutorial/master/data/cities.csv&quot;</span>)
+states &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/altaf-ali/tidydata_tutorial/master/data/states.csv&quot;</span>)</code></pre></div>
+<p>Let’s see how we can merge the <code>universities</code> dataset with the <code>cities</code> dataset.</p>
+<p><img src="tidydata_tutorial_files/figure-html/unnamed-chunk-35-1.png" width="768" /></p>
+<div id="left-join" class="section level2">
+<h2><span class="header-section-number">6.1</span> Left Join</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">universities %&gt;%
+<span class="st">  </span><span class="kw">left_join</span>(cities, <span class="dt">by =</span> <span class="st">&quot;city&quot;</span>)</code></pre></div>
+<p><img src="tidydata_tutorial_files/figure-html/unnamed-chunk-37-1.png" width="768" /></p>
+</div>
+<div id="right-join" class="section level2">
+<h2><span class="header-section-number">6.2</span> Right Join</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">universities %&gt;%
+<span class="st">  </span><span class="kw">right_join</span>(cities, <span class="dt">by =</span> <span class="st">&quot;city&quot;</span>)</code></pre></div>
+<p><img src="tidydata_tutorial_files/figure-html/unnamed-chunk-39-1.png" width="768" /></p>
+</div>
+<div id="inner-join" class="section level2">
+<h2><span class="header-section-number">6.3</span> Inner Join</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">universities %&gt;%
+<span class="st">  </span><span class="kw">inner_join</span>(cities, <span class="dt">by =</span> <span class="st">&quot;city&quot;</span>)</code></pre></div>
+<p><img src="tidydata_tutorial_files/figure-html/unnamed-chunk-41-1.png" width="768" /></p>
+</div>
+<div id="full-join" class="section level2">
+<h2><span class="header-section-number">6.4</span> Full Join</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">universities %&gt;%
+<span class="st">  </span><span class="kw">full_join</span>(cities, <span class="dt">by =</span> <span class="st">&quot;city&quot;</span>)</code></pre></div>
+<p><img src="tidydata_tutorial_files/figure-html/unnamed-chunk-43-1.png" width="768" /></p>
+</div>
+<div id="different-column-names" class="section level2">
+<h2><span class="header-section-number">6.5</span> Different Column Names</h2>
+<p>In the previous example both our datasets included a column named <code>city</code>. But what if the names of the columns in the two datasets were not the same? For example, let’s take a look at the <code>states</code> table:</p>
+<p><img src="tidydata_tutorial_files/figure-html/unnamed-chunk-44-1.png" width="768" /></p>
+<p>What if we were to merge the <code>cities</code> dataset with <code>states</code>?</p>
+<p><img src="tidydata_tutorial_files/figure-html/unnamed-chunk-45-1.png" width="768" /></p>
+<p>One option would be to rename the columns so their names would match, but you don’t really need to do that. You can simply tell the join functions the mapping between the different names.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cities %&gt;%
+<span class="st">  </span><span class="kw">left_join</span>(states, <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;state&quot;</span> =<span class="st"> &quot;statename&quot;</span>))</code></pre></div>
+<p>In the above example, we’re telling <code>left_join()</code> to merge using the <code>state</code> column from the <code>cities</code> data frame and <code>statename</code> column from the <code>states</code> data frame.</p>
+<p><img src="tidydata_tutorial_files/figure-html/unnamed-chunk-47-1.png" width="768" /></p>
+</div>
+<div id="exercise-5" class="section level2">
+<h2><span class="header-section-number">6.6</span> Exercise</h2>
+<ol style="list-style-type: decimal">
+<li><p>Load the following datasets:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">presidents &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/altaf-ali/tidydata_tutorial/master/data/presidents.csv&quot;</span>)
+presidents_home &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/altaf-ali/tidydata_tutorial/master/data/presidents_home.csv&quot;</span>)</code></pre></div>
+<p>The datasets include names of U.S. presidents:</p>
+<p><img src="tidydata_tutorial_files/figure-html/unnamed-chunk-49-1.png" width="768" /></p>
+<p><img src="tidydata_tutorial_files/figure-html/unnamed-chunk-50-1.png" width="768" /></p></li>
+<li><p>Merge the two datasets so that it ONLY includes observations that exist in BOTH the datasets. There should be no missing values or <code>NA</code> in the merged table. The results should match the following:</p>
+<p><img src="tidydata_tutorial_files/figure-html/unnamed-chunk-51-1.png" width="768" /></p></li>
+<li><p>Merge the two datasets so that it includes ALL the observations from both the datasets. Some <code>TookOffice, LeftOffice</code> and <code>HomeState</code> values will be <code>NA</code> and that’s ok. The results should match the following:</p>
+<p><img src="tidydata_tutorial_files/figure-html/unnamed-chunk-52-1.png" width="768" /></p></li>
+<li><p>Merge the two datasets so that ALL observations from the <code>presidents</code> datasets are included. Some <code>HomeState</code> values will be <code>NA</code> and that’s ok. The results should match the following:</p>
+<p><img src="tidydata_tutorial_files/figure-html/unnamed-chunk-53-1.png" width="768" /></p></li>
+<li><p>Merge the two datasets so that ALL observations from the <code>presidents_home</code> datasets are included. Some <code>TookOffice</code> and <code>LeftOffice</code> values will be <code>NA</code> and that’s ok. The results should match the following:</p>
+<p><img src="tidydata_tutorial_files/figure-html/unnamed-chunk-54-1.png" width="768" /></p></li>
+</ol>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="basic-operations.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="reshaping.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": false,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": {}
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": ["tidydata_tutorial.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
